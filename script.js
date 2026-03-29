@@ -341,7 +341,9 @@ document.querySelectorAll('[data-service]').forEach(btn => {
         const map = { 'banho-tosa': 'banho-tosa', 'consulta': 'consulta' };
         const val = map[btn.dataset.service];
         if (val) {
-            document.getElementById('agendamento-form').querySelectorAll('fieldset').forEach((f, i) => {
+            const fieldsets = [... document.getElementById('agendamento-form').querySelectorAll('fieldset')]
+            fieldsets.filter(e => e.id).forEach((f, i) => {
+            console.log(f)
             f.style.display = i === 0 ? '' : 'none';
             });
             showStep(0);
