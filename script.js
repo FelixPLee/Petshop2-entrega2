@@ -212,7 +212,6 @@ document.getElementById('btn-next-1').addEventListener('click', () => {
     if (cpf.value.replace(/\D/g,'').length !== 11) { cpf.classList.add('is-invalid'); valid = false; }
     if (valid) showStep(1);
     else { const firstInvalid = document.querySelector('#step-1 .is-invalid'); if (firstInvalid) firstInvalid.focus(); }
-    console.log("foppagnopsdan")
 });
 
 // Validação passo 2

@@ -51,17 +51,25 @@ body.high-contrast {
     --mid: #000000;
     --light: #000000;
     background: #000;
-    color: #fff;
+    color: #000000;
 }
+/*Alto contraste cabeçalho*/
 body.high-contrast header,
 body.high-contrast .hero { background: #000 !important; }
 body.high-contrast .logo-brand {color: #fff !important;}
-body.high-contrast .section-title {color: #fff !important;}
-body.high-contrast .row-title {color: #fff !important;}
 body.high-contrast .navbar-brand,
 body.high-contrast .nav-link,
+body.high-contrast .navbar-toggler { color: #ffffff !important; }
 body.high-contrast .hero h1,
 body.high-contrast .hero p { color: #fff !important; }
+
+/*Alto contraste corpo*/
+body.high-contrast main-content,
+body.high-contrast .section-title {color: #fff !important;}
+body.high-contrast .row-title {color: #fff !important;}
+/*Alto contraste serviços*/
+body.high-contrast #servicos {background-color: #341a09 !important;}
+
 
 /* Focus visível */
 :focus-visible {
