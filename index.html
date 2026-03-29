@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PataFeliz – Pet Shop</title>
+
+  <!-- Skip to content (Acessibilidade) -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body>
+
+<!-- ════════ BARRA DE ACESSIBILIDADE ════════ -->
+<div class="a11y-bar" role="toolbar" aria-label="Opções de acessibilidade">
+  <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2">
+    <div>
+      <button id="btn-increase-text" aria-label="Aumentar tamanho do texto" title="Aumentar texto"><i class="bi bi-type-h1"></i> A+</button>
+      <button id="btn-decrease-text" aria-label="Diminuir tamanho do texto" title="Diminuir texto"><i class="bi bi-type"></i> A-</button>
+      <button id="btn-contrast" aria-label="Alternar alto contraste" title="Alto contraste"><i class="bi bi-circle-half"></i> Contraste</button>
+      <button id="btn-reset-a11y" aria-label="Redefinir preferências de acessibilidade">Redefinir</button>
+    </div>
+    <div id="clock-display" aria-live="polite" aria-label="Relógio"></div>
+  </div>
+</div>
+
+<!-- ════════ NAVBAR ════════ -->
+<header role="banner">
+  <nav class="navbar navbar-expand-lg" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand" href="#" aria-label="PataFeliz – Página inicial">
+        <span class="logo-brand">Pata<span>Feliz</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item">
+            <button class="nav-link btn-cta border-0" data-bs-toggle="modal" data-bs-target="#agendamentoModal" aria-haspopup="dialog">
+              <i class="bi bi-calendar-check me-1" aria-hidden="true"></i> Agendar
+            </button>
+          </li>
+          <li class="nav-item position-relative">
+            <button class="nav-link border-0 bg-transparent position-relative" id="cart-btn" aria-label="Carrinho de compras" style="cursor:pointer;">
+              <i class="bi bi-bag fs-5" aria-hidden="true"></i>
+              <span id="cart-count" aria-live="polite" aria-atomic="true">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ════════ CARROSSEL HERO ════════ -->
+<main id="main-content">
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000" aria-label="Destaque principal">
+  <div class="carousel-indicators" role="tablist">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" role="tab"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2" role="tab"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3" role="tab"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="carousel-slide cs-1">
+        <div class="container">
+          <div class="carousel-caption-custom">
+            <div class="fade-up">
+              <span class="badge-pill mb-2">🐾 Desde 2010</span>
+              <h1>Tudo o que seu <em>pet</em> precisa<br>em um só lugar</h1>
+              <p>Produtos de qualidade, serviços especializados e muito amor.</p>
+              <button class="btn-cta btn border-0 px-4 py-2" data-bs-toggle="modal" data-bs-target="#agendamentoModal">
+                <i class="bi bi-calendar-check me-1" aria-hidden="true"></i> Agendar Agora
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-paw" aria-hidden="true">🐾</div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="carousel-slide cs-2">
+        <div class="container">
+          <div class="carousel-caption-custom">
+            <span class="badge-pill mb-2">✂️ Banho & Tosa</span>
+            <h1>Profissionais <em>certificados</em><br>para o seu pet</h1>
+            <p>Banho hipoalergênico, tosa artística e muito carinho.</p>
+            <a href="#servicos" class="btn-cta btn border-0 px-4 py-2">
+              <i class="bi bi-scissors me-1" aria-hidden="true"></i> Ver Serviços
+            </a>
+          </div>
+        </div>
+        <div class="hero-paw" aria-hidden="true">✂️</div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="carousel-slide cs-3">
+        <div class="container">
+          <div class="carousel-caption-custom">
+            <span class="badge-pill mb-2">🛍️ Produtos Premium</span>
+            <h1>Os melhores <em>produtos</em><br>para seu companheiro</h1>
+            <p>Rações, acessórios e itens de higiene selecionados com cuidado.</p>
+            <a href="#produtos" class="btn-cta btn border-0 px-4 py-2">
+              <i class="bi bi-bag me-1" aria-hidden="true"></i> Ver Produtos
+            </a>
+          </div>
+        </div>
+        <div class="hero-paw" aria-hidden="true">🛍️</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Slide anterior">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Próximo slide">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div>
+
+<!-- ════════ PRODUTOS ════════ -->
+<section id="produtos" aria-labelledby="produtos-title">
+  <div class="container">
+    <p class="section-label">Loja</p>
+    <h2 class="section-title" id="produtos-title">Nossos Produtos</h2>
+
+    <!-- Alimentação -->
+    <p class="row-title" id="alimentacao-label">Alimentação</p>
+    <div class="row g-4" role="list" aria-labelledby="alimentacao-label">
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Ração Premium Cães">
+          <div class="card-img-wrap">
+            <img src="./img/racao.webp" alt="Embalagem de Ração Premium para Cães adultos" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Alimentação</span>
+            <p class="card-name">Ração Premium Cães</p>
+            <p class="card-desc">Fórmula balanceada com frango, carne e cereais para cães adultos. Rica em proteínas e vitaminas essenciais. Embalagem de 900g.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 29,90">R$ 29,90</span>
+              <button class="btn-add" data-product="Ração Premium Cães" aria-label="Adicionar Ração Premium Cães ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Ração Gatos Salmão">
+          <div class="card-img-wrap">
+            <img src="./img/racaocat.jpg" alt="Embalagem de Ração para Gatos sabor Salmão" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Alimentação</span>
+            <p class="card-name">Ração Gatos Salmão</p>
+            <p class="card-desc">Desenvolvida para gatos adultos com salmão. Auxilia na saúde renal e pelagem brilhante. Embalagem de 1 kg.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 20,90">R$ 20,90</span>
+              <button class="btn-add" data-product="Ração Gatos Salmão" aria-label="Adicionar Ração Gatos Salmão ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Snack Natural Vegano">
+          <div class="card-img-wrap">
+            <img src="./img/racaocoelho.webp" alt="Pacote de Snack Natural Vegano para coelhos" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Alimentação</span>
+            <p class="card-name">Snack Natural Vegano</p>
+            <p class="card-desc">Petisco 100% natural à base de batata-doce e cenoura. Sem conservantes artificiais. Ideal como recompensa para coelhos.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 50,90">R$ 50,90</span>
+              <button class="btn-add" data-product="Snack Natural Vegano" aria-label="Adicionar Snack Natural Vegano ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Higiene -->
+    <p class="row-title" id="higiene-label">Higiene &amp; Cuidados</p>
+    <div class="row g-4" role="list" aria-labelledby="higiene-label">
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Shampoo Hidratante Pet">
+          <div class="card-img-wrap">
+            <img src="./img/shampoo.webp" alt="Frasco de Shampoo Hidratante para pets" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Higiene</span>
+            <p class="card-name">Shampoo Hidratante Pet</p>
+            <p class="card-desc">Fórmula exclusiva e extremamente concentrada que permite sua diluição em 10 partes de água. 1L.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 39,90">R$ 39,90</span>
+              <button class="btn-add" data-product="Shampoo Hidratante Pet" aria-label="Adicionar Shampoo Hidratante Pet ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Escova Antiestática">
+          <div class="card-img-wrap">
+            <img src="./img/escova.webp" alt="Escova Antiestática PRO para pets" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Higiene</span>
+            <p class="card-name">Escova Antiestática</p>
+            <p class="card-desc">Escova PRO Pinos s/ Bolinha Grande – Propetz. Ideal para banho e tosa, remove pelos soltos com facilidade.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 49,90">R$ 49,90</span>
+              <button class="btn-add" data-product="Escova Antiestática" aria-label="Adicionar Escova Antiestática ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Kit Higiene Bucal">
+          <div class="card-img-wrap">
+            <img src="./img/kit.webp" alt="Kit de higiene bucal completo para cães" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Higiene</span>
+            <p class="card-name">Kit Higiene Bucal</p>
+            <p class="card-desc">Conjunto com escova e gel dental para cães. Previne tártaro, mau hálito e doenças gengivais. Kit completo.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 32,90">R$ 32,90</span>
+              <button class="btn-add" data-product="Kit Higiene Bucal" aria-label="Adicionar Kit Higiene Bucal ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Acessórios -->
+    <p class="row-title" id="acessorios-label">Acessórios &amp; Brinquedos</p>
+    <div class="row g-4" role="list" aria-labelledby="acessorios-label">
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Cama Ortopédica Premium">
+          <div class="card-img-wrap">
+            <img src="./img/cama.webp" alt="Cama ortopédica premium para pets" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Acessórios</span>
+            <p class="card-name">Cama Ortopédica Premium</p>
+            <p class="card-desc">Espuma viscoelástica que alivia pressão nas articulações. Capa removível e lavável. Disponível em 3 tamanhos.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 189,90">R$ 189,90</span>
+              <button class="btn-add" data-product="Cama Ortopédica Premium" aria-label="Adicionar Cama Ortopédica Premium ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Kit Brinquedos Interativos">
+          <div class="card-img-wrap">
+            <img src="./img/brinquedos.jpg" alt="Kit com 5 brinquedos interativos para pets" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Brinquedos</span>
+            <p class="card-name">Kit Brinquedos Interativos</p>
+            <p class="card-desc">5 brinquedos de borracha atóxica que estimulam o instinto natural e combatem o tédio. Ideais para raças ativas.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 64,90">R$ 64,90</span>
+              <button class="btn-add" data-product="Kit Brinquedos Interativos" aria-label="Adicionar Kit Brinquedos Interativos ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-4 col-sm-6" role="listitem">
+        <article class="product-card" aria-label="Coleira com GPS">
+          <div class="card-img-wrap">
+            <img src="./img/coleira.jpg" alt="Coleira ajustável com rastreador GPS integrado" loading="lazy">
+          </div>
+          <div class="card-body-inner">
+            <span class="card-tag">Coleira</span>
+            <p class="card-name">Coleira com GPS</p>
+            <p class="card-desc">Coleira ajustável com rastreador GPS integrado e resistência à água IPX5. Bateria de até 7 dias. App iOS e Android.</p>
+            <div class="card-footer-inner">
+              <span class="card-price" aria-label="Preço: R$ 249,90">R$ 249,90</span>
+              <button class="btn-add" data-product="Coleira com GPS" aria-label="Adicionar Coleira com GPS ao carrinho">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SERVIÇOS ════════ -->
+<section id="servicos" style="background: var(--brand-light);" aria-labelledby="servicos-title">
+  <div class="container">
+    <p class="section-label">Serviços</p>
+    <h2 class="section-title" id="servicos-title">Cuide do seu Pet com Especialistas</h2>
+    <p class="text-muted mb-4">Profissionais certificados, equipamentos modernos e muito carinho em cada atendimento.</p>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <article class="service-card" aria-label="Serviço de Banho e Tosa Completo">
+          <span class="service-icon" aria-hidden="true">✂️</span>
+          <span class="service-badge" role="note">Mais Pedido</span>
+          <h3>Banho &amp; Tosa Completo</h3>
+          <p>Serviço completo de higienização com banho em shampoo hipoalergênico, escovação, corte de unhas, limpeza de ouvidos e tosa artística ou higiênica conforme a raça. Atendimento por profissionais certificados.</p>
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <span class="service-price">A partir de R$ 80,00</span>
+            <button class="btn-cta btn border-0 px-3 py-2" data-bs-toggle="modal" data-bs-target="#agendamentoModal" data-service="banho-tosa">
+              <i class="bi bi-calendar-plus me-1" aria-hidden="true"></i> Agendar
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6">
+        <article class="service-card" aria-label="Serviço de Consulta Veterinária">
+          <span class="service-icon" aria-hidden="true">🩺</span>
+          <h3>Consulta Veterinária</h3>
+          <p>Consultas clínicas gerais com médico veterinário registrado no CRMV. Vacinação, vermifugação, check-up preventivo e emissão de atestado de saúde. Urgências atendidas mediante disponibilidade.</p>
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <span class="service-price">A partir de R$ 120,00</span>
+            <button class="btn-cta btn border-0 px-3 py-2" data-bs-toggle="modal" data-bs-target="#agendamentoModal" data-service="consulta">
+              <i class="bi bi-calendar-plus me-1" aria-hidden="true"></i> Agendar
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ MODAL – AGENDAMENTO + CADASTRO ════════ -->
+<div class="modal fade" id="agendamentoModal" tabindex="-1" aria-labelledby="agendamentoModalLabel" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="agendamentoModalLabel">
+          <i class="bi bi-calendar-check me-2" aria-hidden="true"></i>Agendamento &amp; Cadastro
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar modal"></button>
+      </div>
+
+      <div class="modal-body p-4">
+
+        <!-- Indicador de passos -->
+        <div class="step-indicator" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Passo 1 de 3">
+          <div class="step-dot active" id="dot-1"></div>
+          <div class="step-dot" id="dot-2"></div>
+          <div class="step-dot" id="dot-3"></div>
+        </div>
+        <p class="text-muted small mb-3" id="step-label-text">Passo 1 de 3 – Dados do Cliente</p>
+
+        <form id="agendamento-form" novalidate aria-label="Formulário de agendamento">
+
+          <!-- ── PASSO 1: Dados do cliente ── -->
+          <fieldset id="step-1" aria-labelledby="legend-cliente">
+            <legend class="form-section-title" id="legend-cliente"><i class="bi bi-person-fill" aria-hidden="true"></i> Dados do Cliente</legend>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="nome">Nome completo <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.: Maria Silva" required autocomplete="name" aria-required="true">
+                <div class="invalid-feedback">Por favor, informe seu nome completo.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="cpf">CPF <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" required aria-required="true" inputmode="numeric">
+                <div class="invalid-feedback">CPF inválido. Formato: 000.000.000-00</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="email">E-mail <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com" required autocomplete="email" aria-required="true">
+                <div class="invalid-feedback">Por favor, informe um e-mail válido.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label" for="telefone">Telefone / WhatsApp <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(51) 99999-9999" required autocomplete="tel" aria-required="true" inputmode="numeric">
+                <div class="invalid-feedback">Por favor, informe seu telefone.</div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label" for="endereco">Endereço completo <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade" required autocomplete="street-address" aria-required="true">
+                <div class="invalid-feedback">Por favor, informe seu endereço.</div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" maxlength="9" autocomplete="postal-code" inputmode="numeric">
+              </div>
+
+              <div class="col-md-8">
+                <fieldset>
+                  <legend class="form-label">Sexo</legend>
+                  <div class="d-flex gap-3 flex-wrap pt-1">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="sexo-m" value="masculino">
+                      <label class="form-check-label" for="sexo-m">Masculino</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="sexo-f" value="feminino">
+                      <label class="form-check-label" for="sexo-f">Feminino</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="sexo-o" value="outro">
+                      <label class="form-check-label" for="sexo-o">Prefiro não informar</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="aceita-contato" name="aceita-contato" value="1">
+                  <label class="form-check-label" for="aceita-contato">Aceito receber novidades e promoções por e-mail ou WhatsApp</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dados do pet -->
+            <legend class="form-section-title mt-4" id="legend-pet"><i class="bi bi-heart-fill" aria-hidden="true"></i> Dados do Pet</legend>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label" for="pet-nome">Nome do pet <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="text" class="form-control" id="pet-nome" name="pet-nome" placeholder="Ex.: Rex" required aria-required="true">
+                <div class="invalid-feedback">Informe o nome do pet.</div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="pet-especie">Espécie <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <select class="form-select" id="pet-especie" name="pet-especie" required aria-required="true">
+                  <option value="" disabled selected>Selecione…</option>
+                  <option value="cachorro">Cachorro</option>
+                  <option value="gato">Gato</option>
+                  <option value="coelho">Coelho</option>
+                  <option value="outro">Outro</option>
+                </select>
+                <div class="invalid-feedback">Selecione a espécie.</div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="pet-raca">Raça</label>
+                <input type="text" class="form-control" id="pet-raca" name="pet-raca" placeholder="Ex.: Labrador">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="pet-idade">Idade (anos) <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <input type="number" class="form-control" id="pet-idade" name="pet-idade" min="0" max="30" placeholder="Ex.: 3" required aria-required="true">
+                <div class="invalid-feedback">Informe a idade do pet.</div>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="pet-peso">Peso aproximado (kg)</label>
+                <input type="number" class="form-control" id="pet-peso" name="pet-peso" min="0" max="100" step="0.1" placeholder="Ex.: 8.5">
+              </div>
+
+              <div class="col-md-4">
+                <fieldset>
+                  <legend class="form-label">Sexo do pet</legend>
+                  <div class="d-flex gap-3 pt-1">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pet-sexo" id="pet-m" value="macho">
+                      <label class="form-check-label" for="pet-m">Macho</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pet-sexo" id="pet-f" value="femea">
+                      <label class="form-check-label" for="pet-f">Fêmea</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label" for="pet-obs">Observações de saúde / comportamento</label>
+                <textarea class="form-control" id="pet-obs" name="pet-obs" rows="2" placeholder="Ex.: alérgico a determinados produtos, agressivo com estranhos…"></textarea>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn-brand" style="width:auto;padding:10px 36px;" id="btn-next-1">
+                Próximo <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- ── PASSO 2: Serviço e agendamento ── -->
+          <fieldset id="step-2" style="display:none;" aria-labelledby="legend-servico">
+            <legend class="form-section-title" id="legend-servico"><i class="bi bi-scissors" aria-hidden="true"></i> Escolha do Serviço</legend>
+
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="servico-select">Serviço desejado <span class="text-danger" aria-label="campo obrigatório">*</span></label>
+                <select class="form-select" id="servico-select" name="servico" required aria-required="true">
+                  <option value="" disabled selected>Selecione o serviço…</option>
+                  <option value="banho">Banho completo – a partir de R$ 80,00</option>
+                  <option value="tosa">Tosa artística / higiênica – a partir de R$ 80,00</option>
+                  <option value="banho-tosa">Banho &amp; Tosa completo – a partir de R$ 100,00</option>
+                  <option value="consulta">Consulta veterinária – a partir de R$ 120,00</option>
+                </select>
+                <div class="invalid-feedback">Selecione um serviço.</div>
+              </div>
+
+              <div class="col-12">
+                <fieldset>
+                  <legend class="form-label">Método de entrega <span class="text-danger" aria-label="campo obrigatório">*</span></legend>
+                  <div class="row g-2 pt-1">
+                    <div class="col-md-6">
+                      <label class="d-flex align-items-center gap-2 p-3 border rounded-3 cursor-pointer" id="label-local" style="cursor:pointer; border-color:#e0ddd8!important; transition: border-color .2s;">
+                        <input class="form-check-input mt-0" type="radio" name="entrega" id="entrega-local" value="local" required>
+                        <div>
+                          <div class="fw-600">🏪 Levo ao local</div>
+                          <small class="text-muted">Trago meu pet à loja no horário agendado</small>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="d-flex align-items-center gap-2 p-3 border rounded-3" id="label-telebusca" style="cursor:pointer; border-color:#e0ddd8!important; transition: border-color .2s;">
+                        <input class="form-check-input mt-0" type="radio" name="entrega" id="entrega-telebusca" value="telebusca">
+                        <div>
+                          <div class="fw-600">🚗 Tele-busca</div>
+                          <small class="text-muted">Buscamos seu pet no endereço cadastrado</small>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- Calendário -->
+            <div class="mt-4">
+              <p class="form-section-title"><i class="bi bi-calendar3" aria-hidden="true"></i> Escolha a Data</p>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="cal-prev" aria-label="Mês anterior"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+                <strong id="cal-month-year" aria-live="polite"></strong>
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="cal-next" aria-label="Próximo mês"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+              </div>
+              <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Calendário de agendamento"></div>
+              <input type="hidden" id="data-selecionada" name="data-agendamento">
+              <p id="data-display" class="mt-2 small text-muted" aria-live="polite"></p>
+            </div>
+
+            <!-- Horários -->
+            <div class="mt-3" id="time-section" style="display:none;">
+              <p class="form-section-title"><i class="bi bi-clock" aria-hidden="true"></i> Escolha o Horário</p>
+              <div class="time-slots" id="time-slots" role="group" aria-label="Horários disponíveis"></div>
+              <input type="hidden" id="horario-selecionado" name="horario-agendamento">
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="btn-back-2">
+                <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Voltar
+              </button>
+              <button type="button" class="btn-brand" style="width:auto;padding:10px 36px;" id="btn-next-2">
+                Próximo <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+              </button>
+            </div>
+          </fieldset>
+
+          <!-- ── PASSO 3: Revisão e confirmação ── -->
+          <fieldset id="step-3" style="display:none;" aria-labelledby="legend-revisao">
+            <legend class="form-section-title" id="legend-revisao"><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Revisão do Agendamento</legend>
+            <div id="revisao-content" class="mb-4"></div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="aceita-termos" name="aceita-termos" required aria-required="true">
+              <label class="form-check-label" for="aceita-termos">
+                Li e aceito os <a href="#" style="color:var(--brand);">termos de serviço</a> e a <a href="#" style="color:var(--brand);">política de privacidade</a> <span class="text-danger">*</span>
+              </label>
+              <div class="invalid-feedback">Você deve aceitar os termos para continuar.</div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-2">
+              <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="btn-back-3">
+                <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Voltar
+              </button>
+              <button type="submit" class="btn-brand" style="width:auto;padding:10px 36px;">
+                <i class="bi bi-calendar-check me-1" aria-hidden="true"></i> Confirmar Agendamento
+              </button>
+            </div>
+          </fieldset>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<footer id="contato" role="contentinfo">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <span class="logo-footer d-block mb-3" style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;">Pata<span>Feliz</span></span>
+        <p style="color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.7;">Desde 2010 cuidando dos pets com amor, responsabilidade e os melhores produtos do mercado.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" aria-label="Facebook da PataFeliz" style="color:rgba(255,255,255,.5);font-size:1.3rem;transition:color .2s;"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram da PataFeliz" style="color:rgba(255,255,255,.5);font-size:1.3rem;transition:color .2s;"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="WhatsApp da PataFeliz" style="color:rgba(255,255,255,.5);font-size:1.3rem;transition:color .2s;"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#produtos"><i class="bi bi-bag me-1" aria-hidden="true"></i> Produtos</a></li>
+          <li><a href="#servicos"><i class="bi bi-scissors me-1" aria-hidden="true"></i> Serviços</a></li>
+          <li><a href="#contato"><i class="bi bi-envelope me-1" aria-hidden="true"></i> Contato</a></li>
+          <li>
+            <button class="btn p-0 text-start border-0 bg-transparent" style="color:rgba(255,255,255,.65);font-size:.88rem;" data-bs-toggle="modal" data-bs-target="#agendamentoModal">
+              <i class="bi bi-calendar-check me-1" aria-hidden="true"></i> Agendar Serviço
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Contato</h4>
+        <address>
+          <ul style="font-style:normal;">
+            <li><a href="#"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i> Rua dos Animais, 666 – RS</a></li>
+            <li><a href="tel:+555112345678"><i class="bi bi-telephone me-1" aria-hidden="true"></i> (51) 1234-5678</a></li>
+            <li><a href="mailto:contato@patafeliz.com.br"><i class="bi bi-envelope me-1" aria-hidden="true"></i> contato@patafeliz.com.br</a></li>
+            <li><span><i class="bi bi-clock me-1" aria-hidden="true"></i> Seg–Sáb: 8h às 18h</span></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>© 2025 PataFeliz Pet Shop. Todos os direitos reservados.</span>
+      <span>Feito com 🐾 e muito carinho</span>
+    </div>
+  </div>
+</footer>
+</main>
+
+<!-- ════════ TOAST CONTAINER ════════ -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" aria-live="polite" aria-atomic="true">
+  <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toast-msg">Item adicionado ao carrinho!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar notificação"></button>
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JS script -->
+  <script src="script.js"></script>
+</body>
+</html>
